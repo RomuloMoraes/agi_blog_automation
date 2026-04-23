@@ -12,4 +12,14 @@ test.describe('Blog search', () => {
         await searchResultsPage.expectResultsToBeVisible();
         await searchResultsPage.expectFirstResultToContain('fgts');
     });
+
+    test('busca por termo inválido', async ({page}) => {
+        const blogHomePage:BlogHomePage = new BlogHomePage(page);
+
+        await blogHomePage.goto();
+        const searchResultsPage = await blogHomePage.searchFor('@#$%');
+        
+        await searchResultsPage.expectNoResultsMessage();
+        await searchResultsPage.expectNoArticles();      
+    });
 });
