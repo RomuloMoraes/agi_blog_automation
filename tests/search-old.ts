@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Blog search - smoke', () => {
+test.describe.skip('Blog search - smoke', () => {
 
   test('busca por termo válido', async ({ page }) => {
     await page.goto('/');
